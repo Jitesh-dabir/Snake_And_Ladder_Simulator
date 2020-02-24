@@ -34,9 +34,9 @@ do
 			echo ".........................................."
 			echo ""
 			position=$position
-			echo "No Play - position of user1 =$position"
+			echo "No Play - position of user =$position"
 			echo ""
-		   echo ".........................................."
+			echo ".........................................."
 			;;
 
 		2)
@@ -44,6 +44,11 @@ do
 			echo ".........................................."
 			echo ""
 			position=$(($position+$firstRandomNumber))
+			if [ $position -gt $SAFE_POSITION ]
+			then
+					position=$previousPosition
+					previousPosition=$position
+			fi
 			echo "Ladder - position of user =$position"
 			echo ""
 			echo ".........................................."
@@ -57,6 +62,10 @@ do
 			if [ $position -lt $STARTING_POSITION ]
 			then
 				position=$STARTING_POSITION
+			fi
+			if [ $position -lt $SAFE_POSITION ]
+			then
+				previousPosition=$position
 			fi
 			echo "Snake - position of user =$position"
 			echo ""
