@@ -28,7 +28,7 @@ case $randomCheckNumber in
 		position=$(($position))
 		echo "No Play - position of user =$position" 
 		echo ""
-	   echo ".........................................."	
+		echo ".........................................."	
 		;;
 
 	2)
