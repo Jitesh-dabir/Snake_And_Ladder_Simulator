@@ -10,6 +10,7 @@ SAFE_POSITION=100
 
 #VARIABLE
 Position=0
+diceCount=0
 
 #FUNCTION TO GET DIE NUMBER BETWEEN 1 TO 6
 function rollDie()
@@ -18,13 +19,7 @@ function rollDie()
 	echo $randomDieNumber
 }
 
-#FUNCTION CALL TO GET RANDOM DIE NUMBER BETWEEN 1 TO 6
-rollDie
-
 #GENERATE RANDOM NUMBER FOR CHECKING THEY ARE NO PLAY,LADDER,SNAKE
-randomCheckNumber=$((RANDOM%3+1))
-
-#CHECK NO PLAY,SNAKE,LADDER
 while [[ $position -ne $SAFE_POSITION ]]
 do
 	randomNumber=$((RANDOM%3+1))
@@ -34,13 +29,14 @@ do
 			echo ".........................................."
 			echo ""
 			position=$position
-			echo "No Play - position of user =$position"
+			echo "No Play - position of user1 =$position"
 			echo ""
 			echo ".........................................."
 			;;
 
 		2)
-			firstRandomNumber=$((RANDOM%6+1))
+			firstRandomNumber=$(rollDie)
+			diceCount=$((diceCount+1))
 			echo ".........................................."
 			echo ""
 			position=$(($position+$firstRandomNumber))
@@ -55,7 +51,8 @@ do
 			;;
 
 		3)
-			secondRandomNumber=$((RANDOM%6+1))
+			secondRandomNumber=$(rollDie)
+			diceCount=$((diceCount+1))
 			echo ".........................................."
 			echo ""
 			position=$(($position-$secondRandomNumber))
@@ -73,4 +70,4 @@ do
 			;;
 	esac
 done
-echo "user win position=$position"
+echo "user win position=$position and dice rolls $diceCount times to win the game"
