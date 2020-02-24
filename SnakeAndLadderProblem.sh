@@ -32,7 +32,7 @@ do
 
 		1)
 			echo ".........................................."
-	   	echo ""
+			echo ""
 			position=$position
 			echo "No Play - position of user1 =$position"
 			echo ""
