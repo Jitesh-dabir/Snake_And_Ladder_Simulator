@@ -46,8 +46,8 @@ do
 			position=$(($position+$firstRandomNumber))
 			if [ $position -gt $SAFE_POSITION ]
 			then
-					position=$previousPosition
-					previousPosition=$position
+				position=$previousPosition
+				previousPosition=$position
 			fi
 			echo "Ladder - position of user =$position"
 			echo ""
